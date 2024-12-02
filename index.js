@@ -2,17 +2,19 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const PORT = process.env.PORT || 3000; 
-const userRouter = require('./routes/userRouter')
+const PORT = process.env.PORT || 3000;
+const cors = require("cors");
+const userRouter = require("./routes/userRouter");
 
 // set up middleware
-app.use(express.json());  
+app.use(express.json());
+app.use(cors());
 
 // routes that takes in request and response
 app.get("/", (req, res) => {
   res.status(200).json({ success: true, message: "Mb Events Server" });
-}); 
-app.use("/api/v1", userRouter)
+});
+app.use("/api/v1", userRouter);
 // error routes
 app.use((req, res) => {
   res.status(401).json({ success: false, message: "ROUTE NOT FOUND" });
@@ -28,4 +30,4 @@ const startServer = async () => {
     console.log(error);
   }
 };
-startServer()
+startServer();
