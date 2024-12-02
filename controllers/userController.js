@@ -102,13 +102,13 @@ const forgotPassword = async (req, res) => {
 
   // generate resetToken
   const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: "20m",
+    expiresIn: "4h",
   });
 
   // save the reset token and its expiry in the db
   try {
     user.resetToken = resetToken;
-    user.resetTokenExpiry = Date.now() +20 * 60 * 1000; //20 minutes
+    user.resetTokenExpiry = Date.now() +4 *60 * 60 * 1000; //20 minutes
     await user.save();
 
     // create reset link for the frontend
