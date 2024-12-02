@@ -117,7 +117,7 @@ const forgotPassword = async (req, res) => {
     try {
       await sendResetPasswordEmail({
         email: user.email,
-        fullName: USER.FULLname,
+        fullName: user.fullName,
         resetUrl,
       });
     } catch (error) {
