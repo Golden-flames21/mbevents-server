@@ -108,7 +108,7 @@ const forgotPassword = async (req, res) => {
   // save the reset token and its expiry in the db
   try {
     user.resetToken = resetToken;
-    user.resetTokenExpiry = Date.now() +4 *60 * 60 * 1000; //20 minutes
+    user.resetTokenExpiry = Date.now() +4 *60 * 60 * 1000; //4 hours. the extra 60 was added to multiply   by 60 minutes, by 60 seconds by 1000
     await user.save();
 
     // create reset link for the frontend
