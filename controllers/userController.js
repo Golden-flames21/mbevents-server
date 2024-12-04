@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 
 const generateToken = ({ userId, email }) => {
   const token = jwt.sign({ userId, email }, process.env.JWT_SECRET, {
-    expiresIn: "1h",
+    expiresIn: 15 * 60 *60,
   });
   return token;
 };
@@ -102,7 +102,7 @@ const forgotPassword = async (req, res) => {
 
   // generate resetToken
   const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: "4h",
+    expiresIn: 15 * 60 * 60,
   });
 
   // save the reset token and its expiry in the db

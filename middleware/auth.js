@@ -18,8 +18,7 @@ const auth = async (req, res, next) => {
         .json({ success: false, message: "Authentication failed" });
     }
     req.user = {
-      userId: payload,
-      userId,
+      userId: payload.userId,
       email: payload.email,
     };
     next();

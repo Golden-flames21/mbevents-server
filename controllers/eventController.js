@@ -5,7 +5,7 @@ const fs = require("fs");
 // fs above means file system
 
 const createEvent = async (req, res) => {
-  const { userId } = req.userId;
+  const { userId } = req.user;
   const {
     date,
     title,
@@ -58,8 +58,8 @@ const createEvent = async (req, res) => {
         free: free === "true",
         regular: free === "true" ? 0 : req.body?.regularPrice,
         vip: free === "true" ? 0 : req.body?.vipPrice,
-        hostedBy: userId,
       },
+      hostedBy: userId,
     });
     const event = await newEvent.save();
     res.status(201).json({ success: true, event });
