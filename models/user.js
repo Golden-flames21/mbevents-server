@@ -38,6 +38,12 @@ const userSchema = new Schema(
     },
     resetToken: String,
     resetTokenExpiry: Date,
+    yourevents: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Event", //References the Event model
+      },
+    ],
   },
   { timestamps: true }
 );
