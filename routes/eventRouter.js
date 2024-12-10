@@ -18,6 +18,6 @@ router.get("/", getAllEvents);
 router.get("/hosted", auth, getHostedEvents),
 router.post("/pay/:eventId", auth, payForAnEvent);
 router.get("/previous", auth, getpreviousEvents);
-router.get("attending", auth, getEventsToAttend);
+router.get("/attending", auth, getEventsToAttend);
 router.get("/:eventId", getSingleEvent);
 module.exports = router;
